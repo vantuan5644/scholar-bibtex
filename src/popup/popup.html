@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scholar-BibTeX</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="hdr">
+      <div class="brand">
+        <span class="logo">📚</span>
+        <span class="title">Scholar-BibTeX</span>
+      </div>
+      <button id="gear" class="icon-btn" title="Settings" aria-label="Settings">⚙</button>
+    </header>
+
+    <div class="search">
+      <input
+        id="q"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Paste a DOI · arXiv · URL · or title"
+      />
+    </div>
+
+    <div id="status" class="status" hidden></div>
+
+    <main id="results" class="results"></main>
+
+    <section id="recents-section" class="recents-section">
+      <div class="section-head">
+        <span>Recent</span>
+        <button id="clear-recents" class="link-btn">clear</button>
+      </div>
+      <div id="recents" class="recents"></div>
+    </section>
+
+    <section id="settings" class="settings" hidden>
+      <label class="row">
+        <span>Cite-key style</span>
+        <select id="cite-key-style">
+          <option value="nice">nice (vaswani2017attention)</option>
+          <option value="raw">raw (as returned)</option>
+        </select>
+      </label>
+      <label class="row">
+        <span>Polite email (Crossref)</span>
+        <input id="mailto" type="email" placeholder="you@example.com" />
+      </label>
+      <label class="row toggle">
+        <input id="auto-inline" type="checkbox" />
+        <span>Auto-copy high-confidence Scholar matches</span>
+      </label>
+    </section>
+
+    <footer class="ftr">
+      BibTeX via Crossref · OpenAlex · DBLP · Semantic Scholar
+    </footer>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

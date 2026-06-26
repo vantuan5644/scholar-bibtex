@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Scholar-BibTeX",
+  "version": "0.1.0",
+  "description": "Trustworthy BibTeX for Google Scholar results and any DOI/arXiv/title — fetched from open sources (Crossref, OpenAlex, DBLP, Semantic Scholar, arXiv, OpenReview, CVF Open Access), never Scholar's blocked citation endpoint.",
+  "minimum_chrome_version": "110",
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Scholar-BibTeX",
+    "default_icon": {
+      "16": "icons/16.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://scholar.google.com/*"],
+      "js": ["src/content/scholar.js"],
+      "css": ["src/content/scholar.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "https://api.crossref.org/*",
+    "https://api.openalex.org/*",
+    "https://dblp.org/*",
+    "https://api.semanticscholar.org/*",
+    "https://doi.org/*",
+    "https://export.arxiv.org/*",
+    "https://api2.openreview.net/*",
+    "https://openaccess.thecvf.com/*",
+    "https://www.cv-foundation.org/*",
+    "https://cv-foundation.org/*"
+  ],
+  "permissions": ["storage"]
+}
